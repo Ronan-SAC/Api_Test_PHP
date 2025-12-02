@@ -19,4 +19,16 @@ class Request
         };
         return $data;
         }
+
+    public static function authorization(){
+        $authorization = getallheaders();
+
+        if (!isset($authorization['Authorization'])) return ['error' => 'Sem autorização para fazer essa requisição'];
+
+        $authorizationPartials = explode(' ', $authorization['Authorization']);
+
+        if(count($authorizationPartials) != 2) return ['error' => 'Sem autorização para fazer essa requisição'];
+
+        return $authorizationPartials[1] ?? '';
+    }
     }
