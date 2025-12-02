@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Http\Request;
 use App\Http\Response;
+use App\Services\AdminService;
 
 class AdminController {
     public function login(Request $request, Response $response){
@@ -13,8 +14,17 @@ class AdminController {
     public function create(Request $request, Response $response){
         $body = $request::body();
 
+        $AdminService = AdminService::create($body);
+
+        if (isset($AdminService['error'])) {
+            $response::json([
+                'error' => $AdminService['error']
+            ], 400);
+            return;
+        }
+
         $response::json([
-            'data' => $body
+            'data' => $AdminService
         ], 201);
     }
 
