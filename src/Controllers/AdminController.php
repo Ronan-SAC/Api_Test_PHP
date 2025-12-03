@@ -144,4 +144,148 @@ class AdminController {
             'data' => $adminService
         ], 200);
     }
+
+    public function createStudent(Request $request, Response $response){
+        $body = $request::body();
+
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::createStudent($body, $authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 201);
+    }
+
+    public function createClassroom(Request $request, Response $response){
+        $body = $request::body();
+
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::createClassroom($body, $authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 201);
+    }
+
+    public function createEnrollments(Request $request, Response $response){
+        $body = $request::body();
+
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::createEnrollments($body, $authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 201);
+    }
+
+    public function createAttendance(Request $request, Response $response){
+        $body = $request::body();
+
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::createAttendance($body, $authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 201);
+    }
+
+    public function indexStudent(Request $request, Response $response){
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::indexStudent($authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 200);
+    }
+
+    public function indexClassroom(Request $request, Response $response){
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::indexClassroom($authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 200);
+    }
+
+    public function indexTeacher(Request $request, Response $response){
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::indexTeacher($authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 200);
+    }
+
+    public function indexEnrollments(Request $request, Response $response){
+        $authorization = $request::authorization();
+
+        $adminService = AdminService::indexEnrollments($authorization);
+
+        if (isset($adminService['error'])) {
+            $response::json([
+                'error' => $adminService['error']
+            ], 400);
+            return;
+        }
+
+        $response::json([
+            'data' => $adminService
+        ], 200);
+    }
 }
